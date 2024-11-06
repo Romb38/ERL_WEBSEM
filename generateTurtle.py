@@ -51,6 +51,10 @@ abr:{id_book} a abo:Book ;
 """
             text_file.write(output_line)
 
+
+
+
+
 if __name__ == "__main__":
     try:
         generate_turtle("data/artemisBookstoreData-v1.csv", "data/generated/artemisBookstoreData-v1-en.txt")
