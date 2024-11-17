@@ -3,10 +3,11 @@ import DeezerAPI as DAPI
 def main():
     #DAPI.getTitleFromArtistID(13)
     data = DAPI.getDataFromArtistID(13)
-    tracks = DAPI.getAllTracksFromData(data)
-    print(tracks)
+    print(DAPI.getAllInfoFromData(data))
+    #tracks = DAPI.getAllTracksFromData(data)
+    #print(tracks)
 
-    DAPI.generateTurtle(20)
+    #DAPI.generateTurtle(20)
     return
 
 
