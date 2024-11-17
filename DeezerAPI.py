@@ -222,7 +222,7 @@ def getAllInfoFromData(data):
         allInfo['artist_id'] = data['data'][0]['id'] # Généré plus tard
         allInfo['artist_name'] = data['data'][0]['artist']['name']  # nom d'artiste
         allInfo['tracks'] = {} # track_id(clef) + (track_name + featuring)(tuples) #Todo ajouté info artiste
-        allInfo['album'] = {} # ID(clef) + (nom + genre + list track_id)(tuples)
+        allInfo['album'] = {} # ID(clef) + (nom + list genre + list track_id)(tuples)
         allInfo['given_name'] = "Jean" # Todo
         allInfo['family_name'] = "Michel" # Todo
 
