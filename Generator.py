@@ -27,10 +27,10 @@ class Generator:
         """
         Génère la totalité des IDs interne des différentes données
 
-        @param ARTIST_IDS Liste des noms de tous les artistes
+        @param ARTIST_NAMES Liste des noms de tous les artistes
         @param SONG_IDS Liste des IDs de Deezer de toutes les chansons (tout artistes confondus)
         @param ALBUM_IDS Liste des IDs de Deezer de tous les albums (tout artistes confondu)
-        @param KIND Liste de tous les nom de genre de Deezer (tout artistes confondu)
+        @param KINDS Liste de tous les nom de genre de Deezer (tout artistes confondu)
         
         """
         for ARTIST_NAME in ARTIST_NAMES :
@@ -82,8 +82,8 @@ class Generator:
         @param artistName Alias de l'artiste
         @param givenName Prénom de l'artiste
         @param familyName Nom de famille de l'artiste
-        @param ALBUMS_IDS Liste des IDs de Deezer des albums produits par l'artiste
-        @param SONG_IDs Liste des IDs de Deezer des chansons composée par l'artiste
+        @param ALBUM_IDS Liste des IDs de Deezer des albums produits par l'artiste
+        @param SONG_IDS Liste des IDs de Deezer des chansons composée par l'artiste
         """
 
         if not(self.hadGenId):
@@ -128,7 +128,7 @@ class Generator:
         Génére un objet Chanson en turtle
 
         @param SONG_ID ID de Deezer de la chanson
-        @param ID_ARTIST_NAME Nom de l'artiste qui à composé la chanson
+        @param ARTIST_NAME Nom de l'artiste qui à composé la chanson
         @param SONG_NAME Nom de la chanson
         @param FEATURED_ARTIST_NAMES Liste de noms des artistes en featuring sur la chanson
         """
@@ -167,7 +167,7 @@ class Generator:
         @param ALBUM_NAME Nom de l'album
         @param ARTIST_NAME Nom de l'artiste qui à conçu l'album
         @param KIND Genre de l'album selon Deezer
-        @param SONGS Liste des IDs selon Deezer des chansons de l'album
+        @param SONGS_IDS Liste des IDs selon Deezer des chansons de l'album
         """
 
         if not(self.hadGenId):
