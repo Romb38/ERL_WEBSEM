@@ -5,6 +5,10 @@ class Generator:
 
     def __init__(self, file_path) -> None:
         self.path = file_path
+        self.ARTIST_LINK = {}
+        self.ALBUM_LINK = {}
+        self.SONG_LINK = {}
+        self.KIND_LINK = {}
         self.hadGenId = False
         
         if not os.path.exists(self.path):
@@ -35,19 +39,19 @@ class Generator:
         """
         for ARTIST_NAME in ARTIST_NAMES :
             ID_Artist_Name = tools.formatLine(ARTIST_NAME)
-            tools.ARTIST_LINK[ARTIST_NAME] = ID_Artist_Name
+            self.ARTIST_LINK[ARTIST_NAME] = ID_Artist_Name
         
         for SONG_ID in SONG_IDS:
             UUID_SONG = tools.getUUID()
-            tools.SONG_LINK[SONG_ID] = UUID_SONG
+            self.SONG_LINK[SONG_ID] = UUID_SONG
         
         for ALBUM_ID in ALBUM_IDS :
             UUID_ALBUM = tools.getUUID()
-            tools.ALBUM_LINK[ALBUM_ID] = UUID_ALBUM
+            self.ALBUM_LINK[ALBUM_ID] = UUID_ALBUM
         
         for KIND in KINDS :
             KIND_LABEL = tools.formatLine(KIND)
-            tools.KIND_LINK[KIND] = KIND_LABEL
+            self.KIND_LINK[KIND] = KIND_LABEL
 
         self.hadGenId = True
 
@@ -89,10 +93,10 @@ class Generator:
         if not(self.hadGenId):
             raise IDNotGenerated()
 
-        ID_Artist_Name = tools.ARTIST_LINK[ARTIST_NAME]
+        ID_Artist_Name = self.ARTIST_LINK[ARTIST_NAME]
 
-        ALBUMS = "\n".join(f"erlo:produce erl:{tools.ALBUM_LINK[ALBUM_ID]} ;" for ALBUM_ID in ALBUM_IDS)
-        SONG = "\n".join(f"erlo:compose erl:{tools.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONG_IDS)
+        ALBUMS = "\n".join(f"erlo:produce erl:{self.ALBUM_LINK[ALBUM_ID]} ;" for ALBUM_ID in ALBUM_IDS)
+        SONG = "\n".join(f"erlo:compose erl:{self.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONG_IDS)
 
 
         if givenName : 
@@ -135,11 +139,11 @@ class Generator:
         if not(self.hadGenId):
             raise IDNotGenerated()
 
-        UUID_SONG = tools.SONG_LINK[SONG_ID]
-        ID_ARTIST_NAME = tools.ARTIST_LINK[ARTIST_NAME]
+        UUID_SONG = self.SONG_LINK[SONG_ID]
+        ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
 
         if (len(FEATURED_ARTIST_NAMES) > 0) :
-            FEATURED_ARTIST = "\n".join(f"dbo:featuredArtist erl:{tools.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
+            FEATURED_ARTIST = "\n".join(f"dbo:featuredArtist erl:{self.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
         else : 
             FEATURED_ARTIST = ""
 
@@ -173,10 +177,10 @@ class Generator:
         if not(self.hadGenId):
             raise IDNotGenerated()
 
-        UUID_ALBUM = tools.ALBUM_LINK[ALBUM_ID]
-        ID_ARTIST_NAME = tools.ARTIST_LINK[ARTIST_NAME]
-        KIND_LABEL = tools.KIND_LINK[KIND]
-        SONGS = "\n".join(f"erlo:contains erl:{tools.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONGS_IDS)
+        UUID_ALBUM = self.ALBUM_LINK[ALBUM_ID]
+        ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
+        KIND_LABEL = self.KIND_LINK[KIND]
+        SONGS = "\n".join(f"erlo:contains erl:{self.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONGS_IDS)
         
         return self.write(f"""
         erl:{UUID_ALBUM} a dbo:Album
@@ -199,7 +203,7 @@ class Generator:
         if not(self.hadGenId):
             raise IDNotGenerated()
 
-        KIND_LABEL = tools.KIND_LINK[KIND]
+        KIND_LABEL = self.KIND_LINK[KIND]
         return self.write(f"""
         erl:{KIND_LABEL} a dbo:genre
             rdfs:label "{KIND}" ;
