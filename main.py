@@ -11,7 +11,7 @@ def main():
     data = DAPI.getDataFromArtistID(700)
     #print(DAPI.getAllInfoFromData(data))
     datas.append(data)
-    generator = gen.Generator
+    generator = gen.Generator("./")
     ARTIST_NAMES, SONG_IDS, ALBUM_IDS, KINDS = adapt.getFormatedData(datas)
     generator.genIDS(ARTIST_NAMES, SONG_IDS, ALBUM_IDS, KINDS)
 

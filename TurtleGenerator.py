@@ -18,7 +18,9 @@ class Generator:
         
         if not os.path.exists(self.path):
             with open(self.path, 'w') as f:
-                pass 
+                pass
+
+        self.genPrefix()
 
     def write(self, content: str):
         with open(self.path, 'a') as f:
