@@ -39,6 +39,8 @@ def searchArtistByName(artist_name):
     result = musicbrainzngs.search_artists(strict=True, limit=1, artist=artist_name, **{'alias':''})
     
     #Liste donc retourner l'élement 0
+    if len(result['artist-list']) == 0:
+        return None
     return result['artist-list'][0]
 
     #for artist in result['artist-list']:
@@ -65,6 +67,8 @@ def getArtistLegalNameById(artist_id):
     
 def getArtistLegalName(artist_name):
     artist = searchArtistByName(artist_name)
+    if artist is None:
+        return None
     locale_list = ['fr', 'fr_FR', 'en', 'en_US']
     legalName = None
 
