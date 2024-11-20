@@ -90,9 +90,11 @@ class Generator:
             raise IDNotGenerated()
 
         ID_Artist_Name = tools.ARTIST_LINK[ARTIST_NAME]
+
         ALBUMS = "\n".join(f"erlo:produce erl:{tools.ALBUM_LINK[ALBUM_ID]} ;" for ALBUM_ID in ALBUM_IDS)
         SONG = "\n".join(f"erlo:compose erl:{tools.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONG_IDS)
-        
+
+
         if givenName : 
             GIVEN_NAME = "foaf:givenName \"{givenName}\" ;\n"
         else :
@@ -204,10 +206,5 @@ class Generator:
     
 class IDNotGenerated(Exception):
     def __init__(self, message="ID n'a pas été généré avant d'écrire."):
-        self.message = message
-        super().__init__(self.message)
-
-class MissingID(Exception):
-    def __init__(self, message="Une ID est manquante"):
         self.message = message
         super().__init__(self.message)
