@@ -69,7 +69,7 @@ def getArtistLegalName(artist_name):
     legalName = None
 
     #Si groupe il n'y pas pas de nom légal
-    if (artist['type'] == 'Person'):
+    if ('type' in artist and artist['type'] == 'Person'):
         for alias in artist['alias-list']:
             if 'type' in alias and alias['type'] == 'Legal name' :
                 
@@ -79,6 +79,6 @@ def getArtistLegalName(artist_name):
                 if ('locale' in alias and (alias['locale'] in locale_list)) or ('locale' not in alias):
                     legalName = [x.strip() for x in alias['sort-name'].split(',')]
 
-        return legalName
+    return legalName
     
 
