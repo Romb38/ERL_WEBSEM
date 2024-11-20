@@ -33,6 +33,12 @@ def genIDS(
         tools.KIND_LINK[KIND] = KIND_LABEL 
 
 def genPrefix() :
+    """
+    Créer la liste des namespaces nécessaire au projet
+
+    @return String - Liste des namespaces
+    """
+
     return """
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -51,6 +57,18 @@ def genArtist(
         ALBUM_IDS,
         SONG_IDS,
 ):
+    """
+    Génère un objet Artiste en turtle
+
+    @param ARTIST_NAME Nom de l'artiste selon Deezer
+    @param artistName Alias de l'artiste
+    @param givenName Prénom de l'artiste
+    @param familyName Nom de famille de l'artiste
+    @param ALBUMS_IDS Liste des IDs de Deezer des albums produits par l'artiste
+    @param SONG_IDs Liste des IDs de Deezer des chansons composée par l'artiste
+    
+    @return String - Objet Artiste en turtle
+    """
     ID_Artist_Name = tools.ARTIST_LINK[ARTIST_NAME]
     ALBUMS = "\n".join(f"erlo:produce erl:{tools.ALBUM_LINK[ALBUM_ID]} ;" for ALBUM_ID in ALBUM_IDS)
     SONG = "\n".join(f"erlo:compose erl:{tools.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONG_IDS)
@@ -65,7 +83,7 @@ def genArtist(
     else :
         FAMILY_NAME = ""
 
-    return (ID_Artist_Name, f"""
+    return f"""
     erl:{ID_Artist_Name} a foaf:Person
         dbo:artist dbr:{ID_Artist_Name} ;
         {GIVEN_NAME}
@@ -75,7 +93,7 @@ def genArtist(
         {ALBUMS}
         {SONG[:-2]} .
         .
-    """)
+    """
 
 def genSong(
     SONG_ID,
@@ -83,6 +101,16 @@ def genSong(
     SONG_NAME,
     FEATURED_ARTIST_NAMES
 ):
+    """
+    Génére un objet Chanson en turtle
+
+    @param SONG_ID ID de Deezer de la chanson
+    @param ID_ARTIST_NAME Nom de l'artiste qui à composé la chanson
+    @param SONG_NAME Nom de la chanson
+    @param FEATURED_ARTIST_NAMES Liste de noms des artistes en featuring sur la chanson
+
+    @return String - Objet Chanson en turtle
+    """
     UUID_SONG = tools.SONG_LINK[SONG_ID]
     if (len(FEATURED_ARTIST_NAMES) > 0) :
         FEATURED_ARTIST = "\n".join(f"dbo:featuredArtist erl:{tools.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
@@ -90,38 +118,57 @@ def genSong(
         FEATURED_ARTIST = ""
 
 
-    return (UUID_SONG, f"""
+    return f"""
     erl:{UUID_SONG} a dbo:Song
         foaf:Person erl:{ID_ARTIST_NAME} ;
         rdfs:label "{SONG_NAME}" ;
         {FEATURED_ARTIST[:-2]} .
     .
-    """)
+    """
 
 def genAlbum(
         ALBUM_ID,
         ALBUM_NAME,
         ARTIST_NAME,
-        KIND_LABEL,
+        KIND,
         SONGS_IDS
 ):
+    """
+    Créer un objet Album en turtle
+
+    @param ALBUM_ID ID selon Deezer de l'album
+    @param ALBUM_NAME Nom de l'album
+    @param ARTIST_NAME Nom de l'artiste qui à conçu l'album
+    @param KIND Genre de l'album selon Deezer
+    @param SONGS Liste des IDs selon Deezer des chansons de l'album
+
+    @return String - Objet Album en turtle
+    """
     UUID_ALBUM = tools.ALBUM_LINK[ALBUM_ID]
     ID_ARTIST_NAME = tools.ARTIST_LINK[ARTIST_NAME]
+    KIND_LABEL = tools.KIND_LINK[KIND]
     SONGS = "\n".join(f"erlo:contains erl:{tools.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONGS_IDS)
-    return(UUID_ALBUM, f"""
+    return f"""
     erl:{UUID_ALBUM} a dbo:Album
         rdfs:label "{ALBUM_NAME}" ;
         foaf:Person erl:{ID_ARTIST_NAME} ;
         dbo:genre erl:{KIND_LABEL} ;
         {SONGS[:-2]} .
-    """)
+    """
 
 def genKind(
     KIND,
 ):
+    """
+    Créer un objet Genre en turtle
+
+    @param KIND Nom du genre
+
+    @return String - Objet Genre en turtle
+    """
     KIND_LABEL = tools.KIND_LINK[KIND]
-    return (KIND_LABEL, f"""
+    return f"""
     erl:{KIND_LABEL} a dbo:genre
         rdfs:label "{KIND}" ;
         owl:sameAs "{KIND_LABEL}" .
-    """)
+    """
