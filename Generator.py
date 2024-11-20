@@ -120,7 +120,7 @@ class Generator:
     def genSong(
         self,
         SONG_ID,
-        ID_ARTIST_NAME,
+        ARTIST_NAME,
         SONG_NAME,
         FEATURED_ARTIST_NAMES
     ):
@@ -136,6 +136,8 @@ class Generator:
             raise IDNotGenerated()
 
         UUID_SONG = tools.SONG_LINK[SONG_ID]
+        ID_ARTIST_NAME = tools.ARTIST_LINK[ARTIST_NAME]
+
         if (len(FEATURED_ARTIST_NAMES) > 0) :
             FEATURED_ARTIST = "\n".join(f"dbo:featuredArtist erl:{tools.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
         else : 
