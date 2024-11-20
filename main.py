@@ -20,7 +20,8 @@ def main():
     
     #MBAPI.getDataFromArtistID("db92a151-1ac2-438b-bc43-b82e149ddd50")
     #MBAPI.searchArtistByName("Eminem")
-    print(MBAPI.getArtistLegalName("rick astley"))
+    print(MBAPI.getArtistLegalName("georges brassens"))
+    print(MBAPI.getArtistLegalName("eminem"))
     #MBAPI.getArtistLegalNameById("b95ce3ff-3d05-4e87-9e01-c97b66af13d4")
     return
 

@@ -66,6 +66,7 @@ def getArtistLegalNameById(artist_id):
 def getArtistLegalName(artist_name):
     artist = searchArtistByName(artist_name)
     locale_list = ['fr', 'fr_FR', 'en', 'en_US']
+    legalName = None
 
     #Si groupe il n'y pas pas de nom légal
     if (artist['type'] == 'Person'):
