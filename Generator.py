@@ -2,8 +2,13 @@ import tools
 import os
 
 class Generator:
-
     def __init__(self, file_path) -> None:
+        """
+        Générateur du fichier Turtle
+
+        @param file_path Indique le chemin du fichier à écrire
+        """
+
         self.path = file_path
         self.ARTIST_LINK = {}
         self.ALBUM_LINK = {}
@@ -19,7 +24,6 @@ class Generator:
         with open(self.path, 'a') as f:
             f.write(content)
             f.write("\n")
-        return True
 
     def genIDS(
         self,
@@ -35,7 +39,6 @@ class Generator:
         @param SONG_IDS Liste des IDs de Deezer de toutes les chansons (tout artistes confondus)
         @param ALBUM_IDS Liste des IDs de Deezer de tous les albums (tout artistes confondu)
         @param KINDS Liste de tous les nom de genre de Deezer (tout artistes confondu)
-        
         """
         for ARTIST_NAME in ARTIST_NAMES :
             ID_Artist_Name = tools.formatLine(ARTIST_NAME)
