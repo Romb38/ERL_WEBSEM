@@ -76,7 +76,7 @@ def getAllInfoFromData(data):
         allInfo['artist_name'] = data['data'][0]['artist']['name']  # nom d'artiste
         allInfo['tracks'] = {} # track_id(clef) + (track_name + featuring)(tuples) #Todo ajouté info artiste
         allInfo['album'] = {} # ID(clef) + (nom + list genre + list track_id)(tuples)
-
+        print(f"Get information of {allInfo['artist_name']}")
         realName = getArtistLegalName(allInfo['artist_name'])
         if (realName != None and len(realName) > 1):
             allInfo['given_name'] = realName[0]
@@ -129,6 +129,7 @@ def getAllInfoFromData(data):
                             )
                         allInfo['album'][album_id][2].append(track_id)
 
+                    # Fin boucle track
 
                     # REAL NAMES OF FEATURING ARTIST
                     for artist in featuring:
@@ -140,6 +141,15 @@ def getAllInfoFromData(data):
                             featuringTuple.append((artist[1],artist[0],realName[0],realName[1]))
                         else:
                             featuringTuple.append((artist[1],artist[0],"",""))
+
+
+
+                    # Suppression album ayant qu'une musique
+                    albums_to_delete = [album_id for album_id, album_info in allInfo['album'].items() if
+                                        len(album_info[2]) == 1]
+                    for album_id in albums_to_delete:
+                        del allInfo['album'][album_id]
+
                     return allInfo,featuringTuple
                 else:
                     return None

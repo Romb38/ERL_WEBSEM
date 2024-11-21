@@ -7,7 +7,7 @@ def main():
     MBAPI.set_usagent() # Pour pouvoir faire des appel à l'API de MusicBrainz
     #DAPI.getTitleFromArtistID(13)
     datas = []
-    data = DAPI.getDataFromArtistID(788)
+    data = DAPI.getDataFromArtistID(13)
     datas.append(data)
     #plus tard faire une boucle sur datas
 
