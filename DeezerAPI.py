@@ -132,7 +132,7 @@ def getAllInfoFromData(data):
 
                     # REAL NAMES OF FEATURING ARTIST
                     for artist in featuring:
-                        print(f"Get real name of {artist[0]}")
+                        #print(f"Get real name of {artist[0]}")
                         realName = getArtistLegalName(artist[0])
                         if realName!= None and len(realName) <2 :
                             realName = None
