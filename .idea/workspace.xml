@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e7b862-671f-4e6f-984f-66f5003b0cfb" name="Changes" comment="Adding requirements">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="47e7b862-671f-4e6f-984f-66f5003b0cfb" name="Changes" comment="Correcting bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeezerAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeezerAPI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TurtleGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/TurtleGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +97,7 @@
       <workItem from="1731958883075" duration="140000" />
       <workItem from="1732105158597" duration="89000" />
       <workItem from="1732369992834" duration="7000" />
-      <workItem from="1732471124899" duration="3450000" />
+      <workItem from="1732471124899" duration="3824000" />
     </task>
     <task id="LOCAL-00001" summary="Adding git ignore">
       <option name="closed" value="true" />
@@ -126,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732105214085</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Correcting bugs">
+      <option name="closed" value="true" />
+      <created>1732474680526</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732474680526</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,9 +141,10 @@
     <MESSAGE value="Adding git ignore" />
     <MESSAGE value="Adding firsts requests for Deezer" />
     <MESSAGE value="Adding requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding requirements" />
+    <MESSAGE value="Correcting bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcting bugs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ERL_WEBSEM$main.coverage" NAME="main Coverage Results" MODIFIED="1732474528367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ERL_WEBSEM$main.coverage" NAME="main Coverage Results" MODIFIED="1732474590181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

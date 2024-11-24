@@ -10,10 +10,19 @@ class Generator:
         """
 
         self.path = file_path
+
         self.ARTIST_LINK = {}
+        self.WRITTEN_ARTIST = []
+
         self.ALBUM_LINK = {}
+        self.WRITTEN_ALBUM = []
+
         self.SONG_LINK = {}
+        self.WRITTEN_SONG = []
+
         self.KIND_LINK = {}
+        self.WRITTEN_KIND = []
+
         self.hadGenId = False
 
         if os.path.exists(self.path):
@@ -101,6 +110,12 @@ class Generator:
 
         ID_Artist_Name = self.ARTIST_LINK[ARTIST_NAME]
 
+        # On vérifie que l'on à pas déjà écrit l'artiste
+        if ID_Artist_Name in self.WRITTEN_ARTIST:
+            return
+        else :
+            self.WRITTEN_ARTIST.append(ID_Artist_Name)
+
         # Si ALBUM_IDS ou SONG_IDS sont vide, alors la chaine résultante sera vide
         ALBUMS = "".join(f"erlo:produce erl:{self.ALBUM_LINK[ALBUM_ID]} ;\n\t" for ALBUM_ID in ALBUM_IDS)
         SONG = "".join(f"erlo:compose erl:{self.SONG_LINK[SONG_ID]} ;\n\t" for SONG_ID in SONG_IDS)
@@ -152,6 +167,12 @@ erl:{ID_Artist_Name} a foaf:Person ;
             raise IDNotGenerated()
 
         UUID_SONG = self.SONG_LINK[SONG_ID]
+
+        if UUID_SONG in self.WRITTEN_SONG:
+            return
+        else:
+            self.WRITTEN_SONG.append(UUID_SONG)
+
         ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
 
         if (len(FEATURED_ARTIST_NAMES) > 0) :
@@ -189,6 +210,12 @@ erl:{UUID_SONG} a dbo:Song ;
             raise IDNotGenerated()
 
         UUID_ALBUM = self.ALBUM_LINK[ALBUM_ID]
+
+        if UUID_ALBUM in self.WRITTEN_ALBUM:
+            return
+        else :
+            self.WRITTEN_ALBUM.append(UUID_ALBUM)
+
         ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
         KIND_LABEL = self.KIND_LINK[KIND]
         SONGS = "".join(f"erlo:contains erl:{self.SONG_LINK[SONG_ID]} ;\n\t" for SONG_ID in SONGS_IDS)
@@ -215,6 +242,11 @@ erl:{UUID_ALBUM} a dbo:Album ;
             raise IDNotGenerated()
 
         KIND_LABEL = self.KIND_LINK[KIND]
+        if KIND_LABEL in self.WRITTEN_KIND:
+            return
+        else :
+            self.WRITTEN_KIND.append(KIND_LABEL)
+
         return self.write(f"""
 erl:{KIND_LABEL} a dbo:genre ;
     rdfs:label "{tools.esc(KIND)}" ;
