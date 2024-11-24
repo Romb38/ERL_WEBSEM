@@ -15,25 +15,26 @@ class Generator:
         self.SONG_LINK = {}
         self.KIND_LINK = {}
         self.hadGenId = False
-        
-        if not os.path.exists(self.path):
-            with open(self.path, 'w') as f:
-                pass
+
+        if os.path.exists(self.path):
+            os.remove(self.path)
 
         self.genPrefix()
 
-    def write(self, content: str):
+    def write(self, content: str) -> None:
+        # Supprimer les lignes vides
+        non_empty_lines = "\n".join(line for line in content.splitlines() if line.strip())
+        # Écrire dans le fichier
         with open(self.path, 'a') as f:
-            f.write(content)
-            f.write("\n")
+            f.write(non_empty_lines + "\n\n")
 
     def genIDS(
         self,
-        ARTIST_NAMES,
-        SONG_IDS,
-        ALBUM_IDS,
-        KINDS
-    ):
+        ARTIST_NAMES : list[str],
+        SONG_IDS : list[str],
+        ALBUM_IDS : list[str],
+        KINDS : list[str],
+    ) -> None:
         """
         Génère la totalité des IDs interne des différentes données
 
@@ -60,30 +61,30 @@ class Generator:
 
         self.hadGenId = True
 
-    def genPrefix(self) :
+    def genPrefix(self) -> None :
         """
         Créer la liste des namespaces nécessaire au projet
         """
 
         return self.write("""
-        @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-        @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-        @prefix dbo: <http://dbpedia.org/ontology/> .
-        @prefix dbr: <http://dbpedia.org/resource/> .
-        @prefix owl: <http://www.w3.org/2002/07/owl#>/ .
-        @prefix erl: <http://www.websem.csv/resource/> .
-        @prefix erlo: <http://www.websem.csv/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix erl: <http://www.websem.csv/resource/> .
+@prefix erlo: <http://www.websem.csv/ontology/> .
         """)
 
     def genArtist(
             self,
-            ARTIST_NAME,
-            artistName,
-            givenName,
-            familyName,
-            ALBUM_IDS,
-            SONG_IDS,
-    ):
+            ARTIST_NAME : str,
+            artistName : str,
+            givenName : str,
+            familyName : str,
+            ALBUM_IDS : list[str],
+            SONG_IDS : list[str],
+    ) -> None:
         """
         Génère un objet Artiste en turtle
 
@@ -100,39 +101,45 @@ class Generator:
 
         ID_Artist_Name = self.ARTIST_LINK[ARTIST_NAME]
 
-        ALBUMS = "\n".join(f"erlo:produce erl:{self.ALBUM_LINK[ALBUM_ID]} ;" for ALBUM_ID in ALBUM_IDS)
-        SONG = "\n".join(f"erlo:compose erl:{self.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONG_IDS)
+        # Si ALBUM_IDS ou SONG_IDS sont vide, alors la chaine résultante sera vide
+        ALBUMS = "".join(f"erlo:produce erl:{self.ALBUM_LINK[ALBUM_ID]} ;\n\t" for ALBUM_ID in ALBUM_IDS)
+        SONG = "".join(f"erlo:compose erl:{self.SONG_LINK[SONG_ID]} ;\n\t" for SONG_ID in SONG_IDS)
 
 
         if givenName : 
-            GIVEN_NAME = "foaf:givenName \"{givenName}\" ;\n"
+            GIVEN_NAME = f"foaf:givenName \"{tools.esc(givenName)}\" ;\n"
         else :
             GIVEN_NAME = ""
 
         if familyName : 
-            FAMILY_NAME = "foaf:familyName \"{familyName}\" ;\n"
+            FAMILY_NAME = f"foaf:familyName \"{tools.esc(familyName)}\" ;\n"
         else :
             FAMILY_NAME = ""
 
+        if artistName :
+            ALIAS_ARTIST = f"dbo:alias \"{artistName}\" ;"
+        else :
+            ALIAS_ARTIST = ""
+
+
         return self.write(f"""
-        erl:{ID_Artist_Name} a foaf:Person
-            dbo:artist dbr:{ID_Artist_Name} ;
-            {GIVEN_NAME}
-            {FAMILY_NAME}
-            dbo:alias "{artistName}" ;
-            owl:sameAs dbr:{ID_Artist_Name} ;
-            {ALBUMS}
-            {SONG[:-2]} .
-            .
+erl:{ID_Artist_Name} a foaf:Person ;
+    dbo:artist dbr:{ID_Artist_Name} ;
+    {GIVEN_NAME}
+    {FAMILY_NAME}
+    {ALIAS_ARTIST}
+    owl:sameAs dbr:{ID_Artist_Name} ;
+    {ALBUMS[:-2]}
+    {SONG[:-4]} .
         """)
 
     def genSong(
         self,
-        SONG_ID,
-        ARTIST_NAME,
-        SONG_NAME,
-        FEATURED_ARTIST_NAMES
-    ):
+        SONG_ID : str,
+        ARTIST_NAME : str,
+        SONG_NAME : str,
+        FEATURED_ARTIST_NAMES : list[str],
+    ) -> None:
         """
         Génére un objet Chanson en turtle
 
@@ -148,27 +155,26 @@ class Generator:
         ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
 
         if (len(FEATURED_ARTIST_NAMES) > 0) :
-            FEATURED_ARTIST = "\n".join(f"dbo:featuredArtist erl:{self.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
+            FEATURED_ARTIST = "".join(f"dbo:featuredArtist erl:{self.ARTIST_LINK[FEATURED_ARTIST_NAME]} ;\n\t" for FEATURED_ARTIST_NAME in FEATURED_ARTIST_NAMES)
         else : 
             FEATURED_ARTIST = ""
 
 
         return self.write(f"""
-        erl:{UUID_SONG} a dbo:Song
-            foaf:Person erl:{ID_ARTIST_NAME} ;
-            rdfs:label "{SONG_NAME}" ;
-            {FEATURED_ARTIST[:-2]} .
-        .
+erl:{UUID_SONG} a dbo:Song ;
+    foaf:Person erl:{ID_ARTIST_NAME} ;
+    rdfs:label "{tools.esc(SONG_NAME)}" ;
+    {FEATURED_ARTIST[:-3]} .
         """)
 
     def genAlbum(
             self,
-            ALBUM_ID,
-            ALBUM_NAME,
-            ARTIST_NAME,
-            KIND,
-            SONGS_IDS
-    ):
+            ALBUM_ID : str,
+            ALBUM_NAME : str,
+            ARTIST_NAME : str,
+            KIND : str,
+            SONGS_IDS : list[str]
+    ) -> None:
         """
         Créer un objet Album en turtle
 
@@ -185,20 +191,20 @@ class Generator:
         UUID_ALBUM = self.ALBUM_LINK[ALBUM_ID]
         ID_ARTIST_NAME = self.ARTIST_LINK[ARTIST_NAME]
         KIND_LABEL = self.KIND_LINK[KIND]
-        SONGS = "\n".join(f"erlo:contains erl:{self.SONG_LINK[SONG_ID]} ;" for SONG_ID in SONGS_IDS)
+        SONGS = "".join(f"erlo:contains erl:{self.SONG_LINK[SONG_ID]} ;\n\t" for SONG_ID in SONGS_IDS)
         
         return self.write(f"""
-        erl:{UUID_ALBUM} a dbo:Album
-            rdfs:label "{ALBUM_NAME}" ;
-            foaf:Person erl:{ID_ARTIST_NAME} ;
-            dbo:genre erl:{KIND_LABEL} ;
-            {SONGS[:-2]} .
+erl:{UUID_ALBUM} a dbo:Album ;
+    rdfs:label "{tools.esc(ALBUM_NAME)}" ;
+    foaf:Person erl:{ID_ARTIST_NAME} ;
+    dbo:genre erl:{KIND_LABEL} ;
+    {SONGS[:-3]} .
         """)
 
     def genKind(
         self,
-        KIND,
-    ):
+        KIND : str,
+    ) -> None:
         """
         Créer un objet Genre en turtle
 
@@ -210,9 +216,9 @@ class Generator:
 
         KIND_LABEL = self.KIND_LINK[KIND]
         return self.write(f"""
-        erl:{KIND_LABEL} a dbo:genre
-            rdfs:label "{KIND}" ;
-            owl:sameAs "{KIND_LABEL}" .
+erl:{KIND_LABEL} a dbo:genre ;
+    rdfs:label "{tools.esc(KIND)}" ;
+    owl:sameAs "{KIND_LABEL}" .
         """)
     
 class IDNotGenerated(Exception):

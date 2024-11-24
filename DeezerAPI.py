@@ -4,8 +4,6 @@ import requests
 
 BASE_URL = "https://api.deezer.com"
 
-
-
 def getDataFromArtistID(artist_id):
     """
     Get from Deezer API the data of the artist
