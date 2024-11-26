@@ -7,8 +7,12 @@ def main():
     MBAPI.set_usagent() # Pour pouvoir faire des appel à l'API de MusicBrainz
     #DAPI.getTitleFromArtistID(13)
     datas = []
-    data = DAPI.getDataFromArtistID(13)
+    data = DAPI.getDataFromArtistID(744)
     datas.append(data)
+    #todo a debug quand plusieurs datas
+    #data = DAPI.getDataFromArtistID(745)
+    #datas.append(data)
+
     #plus tard faire une boucle sur datas
 
     generator = gen.Generator("./turtle.ttl")
@@ -23,15 +27,10 @@ def main():
     for albumParam in albumParams:
         generator.genAlbum(albumParam[0],albumParam[1],albumParam[2],albumParam[3],albumParam[4])
 
+    for kinds in idsParams[3]:
+        generator.genKind(kinds)
 
-    #DAPI.generateTurtle(20)
-    #Identification pour accéder à l'API MusicBrainz
 
-
-    #MBAPI.getDataFromArtistID("db92a151-1ac2-438b-bc43-b82e149ddd50")
-    #MBAPI.searchArtistByName("Eminem")
-    #print(MBAPI.getArtistLegalName("eminem"))
-    #MBAPI.getArtistLegalNameById("b95ce3ff-3d05-4e87-9e01-c97b66af13d4")
     return
 
 
