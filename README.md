@@ -46,6 +46,40 @@ WHERE {
 }
 ```
 
+ - Répertorie tous les artistes ayant composé au moins un album du genre "Rap/Hip Hop"
+```sql
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX erl: <http://www.websem.csv/resource/>
+PREFIX erlo: <http://www.websem.csv/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?artist
+WHERE {
+  ?artist a foaf:Person ;
+          erlo:produce ?album .
+  ?album a dbo:Album ;
+        dbo:genre ?genre .
+  ?genre rdfs:label "Rap/Hip Hop" .
+}
+```
+
+  - Compte le nombre d'album par genre (tri par ordre décroissant)
+```sql
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX erl: <http://www.websem.csv/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?genreLabel (COUNT(?album) AS ?albumCount)
+WHERE {
+  ?album a dbo:Album ;
+         dbo:genre ?genre .
+  ?genre rdfs:label ?genreLabel .
+}
+GROUP BY ?genreLabel
+ORDER BY DESC(?albumCount)
+```
+
 ## Auteurs
 
 Lucas SUBE
