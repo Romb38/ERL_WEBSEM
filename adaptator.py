@@ -83,7 +83,7 @@ def getGenArtistParams(allInfos, featurings):
         family_name = info['family_name']
         album_ids = list(info['album'])
         tracks_ids = list(info['tracks'])
-        artistParams.append((artist_name, given_name, family_name, album_ids, tracks_ids))
+        artistParams.append((artist_name, family_name, given_name, album_ids, tracks_ids))
 
     for feat in featurings:
         #artist_id + artist_name + given_name + family_name
