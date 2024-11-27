@@ -22,6 +22,30 @@ Ce projet à pour but de récupérer les informations de l'API de Deezer et de l
 
 L'opération peut prendre plusieurs minutes
 
+
+# Requêtes SPARQL
+
+Le résultat de toutes les requetes est stocké sous format json dans le dossier SQPARQL_response
+
+ - Recupere toutes les musiques puis donne l'artiste et le vrai nom de l'artiste
+
+```sql
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX erl: <http://www.websem.csv/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?song ?songName ?artist ?givenName ?familyName
+WHERE {
+  ?song a dbo:Song ;
+        rdfs:label ?songName ;
+        foaf:Person ?artist .
+  ?artist foaf:givenName ?givenName ;
+    foaf:familyName ?familyName .
+}
+```
+
 ## Auteurs
 
 Lucas SUBE
