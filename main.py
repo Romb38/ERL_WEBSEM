@@ -3,6 +3,8 @@ import MusicBrainzAPI as MBAPI
 import adaptator as adapt
 import TurtleGenerator as gen
 import subprocess
+import os
+
 
 def main():
     MBAPI.set_usagent() # Pour pouvoir faire des appel à l'API de MusicBrainz
@@ -37,6 +39,7 @@ def main():
         generator.genKind(kinds)
 
     script_path = './formatTurtle.sh'
+    os.chmod(script_path, 0o755) #chmod u+x
     subprocess.run(['sh', script_path,"turtle.ttl"])
 
     return
