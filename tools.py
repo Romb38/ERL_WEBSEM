@@ -41,7 +41,7 @@ def esc(input_string:str)->str:
     @return: La chaîne avec les caractères spéciaux échappés.
     """
     # Définir les caractères spéciaux à échapper
-    special_chars = r"`'\"{}[]()<>|&;*?~$\\"
+    special_chars = r"`'\"*?\\"
 
     # Ajoute un backslash devant les caractères spéciaux
     escaped_string = re.sub(f"([{re.escape(special_chars)}])", r"\\\1", input_string)
