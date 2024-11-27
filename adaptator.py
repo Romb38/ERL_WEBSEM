@@ -36,13 +36,13 @@ def getAllArtistNames(allInfos, featurings):
 def getAllSongIDs(allInfos):
     ids = []
     for info in allInfos:
-        ids.append(list(info['tracks']))
+        ids.extend(list(info['tracks']))
     return ids
 
 def getAllAlbumIDs(allInfos):
     ids = []
     for info in allInfos:
-        ids.append(list(info['album']))
+        ids.extend(list(info['album']))
     return ids
 
 def getAllKind(allInfo):
@@ -64,8 +64,8 @@ def getAllKind(allInfo):
 
 def getGenIDsParam(allInfos, featurings):
     ARTIST_NAMES = getAllArtistNames(allInfos, featurings)
-    SONG_IDS = getAllSongIDs(allInfos)[0]
-    ALBUM_IDS = getAllAlbumIDs(allInfos)[0]
+    SONG_IDS = getAllSongIDs(allInfos)
+    ALBUM_IDS = getAllAlbumIDs(allInfos)
     KINDS = getAllKind(allInfos)
     return (ARTIST_NAMES, SONG_IDS, ALBUM_IDS, KINDS)
 
