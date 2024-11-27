@@ -15,7 +15,7 @@ Ce projet à pour but de récupérer les informations de l'API de Deezer et de l
  - **main.py** Recuperation des données, formatage, écriture du fichier turtle.
  - **TurtleGenerator.py** Ecrit le turtle à partir des données (voir onthologie).
  - **requirement.txt** listes des librairie python necessaire.
-
+ - **formatTurtle.py** Suppression de certain caractere dans le turtle.
 
 # Generation du turtle
 - ```python3 main.py```
