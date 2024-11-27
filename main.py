@@ -7,9 +7,9 @@ def main():
     MBAPI.set_usagent() # Pour pouvoir faire des appel à l'API de MusicBrainz
     #DAPI.getTitleFromArtistID(13)
     datas = []
-    for i in range(10):
+    for i in range(30):
         data = DAPI.getDataFromArtistID(744+i)
-        if data['data'] == []:
+        if data is None:
             print(f"Aucune donnée pour l'artiste {744+i}")
             continue
         datas.append(data)
