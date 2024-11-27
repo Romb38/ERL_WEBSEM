@@ -2,6 +2,7 @@ import DeezerAPI as DAPI
 import MusicBrainzAPI as MBAPI
 import adaptator as adapt
 import TurtleGenerator as gen
+import subprocess
 
 def main():
     MBAPI.set_usagent() # Pour pouvoir faire des appel à l'API de MusicBrainz
@@ -9,7 +10,7 @@ def main():
     datas = []
     #data = DAPI.getDataFromArtistID(744)
     #datas.append(data)
-
+    """
     for i in range(30):
         data = DAPI.getDataFromArtistID(744+i)
         if data is None:
@@ -33,8 +34,10 @@ def main():
         generator.genAlbum(albumParam[0],albumParam[1],albumParam[2],albumParam[3],albumParam[4])
 
     for kinds in idsParams[3]:
-        generator.genKind(kinds)
+        generator.genKind(kinds)"""
 
+    script_path = './formatTurtle.sh'
+    subprocess.run(['sh', script_path,"turtle.ttl"])
 
     return
 
