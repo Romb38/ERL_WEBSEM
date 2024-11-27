@@ -1,6 +1,5 @@
 .idea/
 .idea/*
 __pycache__/
-turtle.ttl
 .idea/misc.xml
 .idea/workspace.xml
