@@ -1,0 +1,155 @@
+{
+  "head" : {
+    "vars" : [
+      "artist"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Snoop_Dogg"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Outkast"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Eminem"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Id_50_Cent"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Gorillaz"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Usher"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/K_Maro"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Lorenzo"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Akon"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Papi_Sanchez"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Iam"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Akhenaton"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Camron"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Don_Choa"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Mc_Solaar"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Kayliah"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Fort_Minor"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Nas"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Fabolous"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Pharoahe_Monch"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Ludacris"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Missy_Elliott"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Linkin_Park"
+        }
+      },
+      {
+        "artist" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Coolio"
+        }
+      }
+    ]
+  }
+}

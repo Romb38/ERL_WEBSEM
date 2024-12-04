@@ -10,89 +10,23 @@
       {
         "genreLabel" : {
           "type" : "literal",
-          "value" : "Rap/Hip Hop"
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "87"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
           "value" : "Pop"
         },
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "64"
+          "value" : "282"
         }
       },
       {
         "genreLabel" : {
           "type" : "literal",
-          "value" : "Electro"
+          "value" : "Rap/Hip Hop"
         },
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "42"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
-          "value" : "Films/Jeux vidéo"
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "31"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
-          "value" : "Dance"
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "24"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
-          "value" : "Jazz"
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "14"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
-          "value" : ""
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "12"
-        }
-      },
-      {
-        "genreLabel" : {
-          "type" : "literal",
-          "value" : "Alternative"
-        },
-        "albumCount" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "11"
+          "value" : "186"
         }
       },
       {
@@ -103,29 +37,62 @@
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "9"
+          "value" : "128"
         }
       },
       {
         "genreLabel" : {
           "type" : "literal",
-          "value" : "Classique"
+          "value" : "Electro"
         },
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5"
+          "value" : "99"
         }
       },
       {
         "genreLabel" : {
           "type" : "literal",
-          "value" : "R\\&B"
+          "value" : "Dance"
         },
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "4"
+          "value" : "90"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "Alternative"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "64"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "R&B"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "34"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : ""
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "21"
         }
       },
       {
@@ -136,7 +103,7 @@
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "4"
+          "value" : "18"
         }
       },
       {
@@ -147,13 +114,57 @@
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1"
+          "value" : "8"
         }
       },
       {
         "genreLabel" : {
           "type" : "literal",
-          "value" : "Metal"
+          "value" : "Latino"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "Disco"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "Films/Jeux vidéo"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "Classique"
+        },
+        "albumCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
+        }
+      },
+      {
+        "genreLabel" : {
+          "type" : "literal",
+          "value" : "Jazz"
         },
         "albumCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",

@@ -1,0 +1,172 @@
+{
+  "head" : {
+    "vars" : [
+      "albumName",
+      "genre"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Le chant des cygnes"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Paradize"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "L'aventurier"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Disco"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Babel Babel"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Unita (Best Of)"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "13"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "3"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Disco"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Nos célébrations"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Alice & June (deluxe edition)"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Disco"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Central Tour 2022"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "La république des Meteors"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Disco"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Le baiser"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Disco"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Le péril jaune"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Black City Parade"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Dancetaria"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      },
+      {
+        "albumName" : {
+          "type" : "literal",
+          "value" : "Alice & June Tour"
+        },
+        "genre" : {
+          "type" : "uri",
+          "value" : "http://www.websem.csv/resource/Rock"
+        }
+      }
+    ]
+  }
+}

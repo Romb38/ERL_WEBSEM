@@ -26,7 +26,7 @@ Une fois cette opération terminée, on peut retrouver le fichier turtle ici : '
 
 Tous les résultats des requêtes sont stockées (sous format json) dans le dossier SQPARQL_response
 
- - **allSongs.jsr** : Recupere toutes les musiques puis donne l'artiste et le vrai nom de l'artiste
+ - **allSongs.srj** : Recupere toutes les musiques puis donne l'artiste et le vrai nom de l'artiste
 
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -45,7 +45,7 @@ WHERE {
 }
 ```
 
- -  **artistGenre.jsr** : Répertorie tous les artistes ayant composé au moins un album du genre "Rap/Hip Hop"
+ -  **artistGenre.srj** : Répertorie tous les artistes ayant composé au moins un album du genre "Rap/Hip Hop"
 ```sql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -63,7 +63,7 @@ WHERE {
 }
 ```
 
-  -  **genreCount.jsr** : Compte le nombre d'album par genre (tri par ordre décroissant)
+  -  **genreCount.srj** : Compte le nombre d'album par genre (tri par ordre décroissant)
 
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -78,6 +78,26 @@ WHERE {
 }
 GROUP BY ?genreLabel
 ORDER BY DESC(?albumCount)
+```
+
+  -  **albumList.srj** : Liste les albums d'Indochine et leur genre
+  
+```sql
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX erlo: <http://www.websem.csv/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT ?albumName ?genre
+WHERE {
+  ?artist a foaf:Person ;
+    dbo:artist dbr:Indochine;
+          erlo:produce ?album .
+  ?album a dbo:Album  ;
+    rdfs:label ?albumName ;
+    dbo:genre ?genre.
+}
 ```
 
 ## Auteurs
