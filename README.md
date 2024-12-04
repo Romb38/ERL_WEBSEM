@@ -20,8 +20,9 @@ Ce projet à pour but de récupérer les informations de l'API de Deezer et de l
 # Generation du turtle
 - ```python3 main.py```
 
+Cet algorithme génère un fichier turtle à partir des donées de Deezer et MusicBrainz. Pour cela, il prends les 100 premières IDs (de deezer) des chanteurs afin de récupérer leurs infos.
 L'opération peut prendre plusieurs minutes du aux restrictions sur le nombre de requêtes sur les API.
-
+Une fois cette opération terminée, on peut retrouver le fichier turtle ici : './turtle.ttl'
 
 # Requêtes SPARQL
 
