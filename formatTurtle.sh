@@ -16,6 +16,11 @@ if [ ! -f "$fichier" ]; then
 fi
 
 # Supprime les caractères '\' du fichier
-sed -i 's/\\//g' "$fichier"
+perl -i -pe 's/\\(?!")//g' $fichier
+
+
+
+
+
 
 echo "Les caractères '\\' ont été supprimés du fichier '$fichier'."
