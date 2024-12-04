@@ -20,7 +20,7 @@ Ce projet à pour but de récupérer les informations de l'API de Deezer et de l
 # Generation du turtle
 - ```python3 main.py```
 
-L'opération peut prendre plusieurs minutes
+L'opération peut prendre plusieurs minutes du aux restrictions sur le nombre de requêtes sur les API.
 
 
 # Requêtes SPARQL
