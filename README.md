@@ -3,19 +3,8 @@
 Ce projet à pour but de récupérer les informations de l'API de Deezer et de l'API de MusicBrainz pour les fusionner et créer un fichier Turtle.
 
 #  Installation et prerequis
-- Avoir DBGrapher
 - Être connecté à internet
-- Les dépendances python : ```python3 -m pip install requirements.txt```
-
-
-# Structure du projet
- - **DeezerAPI.py** et **MusicBrainzAPI.py** recupère les informations sur les artistes,albums,musiques a partir d'API publique.
- - **adaptator.py** structure les informations de toutes les données pour le generateur de turtle. 
- - **tool.py** fonctions utilitaire pour le générateur
- - **main.py** Recuperation des données, formatage, écriture du fichier turtle.
- - **TurtleGenerator.py** Ecrit le turtle à partir des données (voir onthologie).
- - **requirement.txt** listes des librairie python necessaire.
- - **formatTurtle.sh** Suppression de certain caractere dans le turtle.
+- Installer les dépendances python : ```python3 -m pip install requirements.txt```
 
 # Generation du turtle
 - ```python3 main.py```
@@ -24,11 +13,20 @@ Cet algorithme génère un fichier turtle à partir des donées de Deezer et Mus
 L'opération peut prendre plusieurs minutes du aux restrictions sur le nombre de requêtes sur les API.
 Une fois cette opération terminée, on peut retrouver le fichier turtle ici : './turtle.ttl'
 
+# Structure du projet
+- **main.py** : Recuperation des données, formatage, écriture du fichier turtle.
+- **DeezerAPI.py** et **MusicBrainzAPI.py** : recupère les informations sur les artistes,albums,musiques a partir d'API publique.
+- **adaptator.py** : structure les informations de toutes les données pour le generateur de turtle. 
+- **tool.py** : fonctions utilitaire pour le générateur
+- **TurtleGenerator.py** : Ecrit le turtle à partir des données (voir onthologie).
+- **formatTurtle.sh** : suppression de caractères d'échappement dans le fichier turtle.
+
+
 # Requêtes SPARQL
 
-Le résultat de toutes les requetes est stocké sous format json dans le dossier SQPARQL_response
+Tous les résultats des requêtes sont stockées (sous format json) dans le dossier SQPARQL_response
 
- - Recupere toutes les musiques puis donne l'artiste et le vrai nom de l'artiste
+ - **allSongs.jsr** : Recupere toutes les musiques puis donne l'artiste et le vrai nom de l'artiste
 
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -47,7 +45,7 @@ WHERE {
 }
 ```
 
- - Répertorie tous les artistes ayant composé au moins un album du genre "Rap/Hip Hop"
+ -  **artistGenre.jsr** : Répertorie tous les artistes ayant composé au moins un album du genre "Rap/Hip Hop"
 ```sql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -65,7 +63,8 @@ WHERE {
 }
 ```
 
-  - Compte le nombre d'album par genre (tri par ordre décroissant)
+  -  **genreCount.jsr** : Compte le nombre d'album par genre (tri par ordre décroissant)
+
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX erl: <http://www.websem.csv/resource/>
