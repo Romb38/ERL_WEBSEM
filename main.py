@@ -13,7 +13,7 @@ def main():
     #data = DAPI.getDataFromArtistID(744)
     #datas.append(data)
 
-    for i in range(50):
+    for i in range(100):
         data = DAPI.getDataFromArtistID(1+i)
         if data is None:
             print(f"Aucune donnée pour l'artiste {1+i}")
